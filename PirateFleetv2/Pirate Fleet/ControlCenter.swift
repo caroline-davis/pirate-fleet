@@ -40,14 +40,25 @@ struct Ship {
         
             // Hint: The cells getter should return an array of GridLocations.
             return occupiedCells
-
         }
     }
     
     var hitTracker: HitTracker
 // TODO: Add a getter for sunk. Calculate the value returned using hitTracker.cellsHit.
     var sunk: Bool {
+        get {
+            var numberOfCellsInShip = cells.count
+            var hitNumberOfCellsInShip: Int = 0
+            for cell in cells {
+                if hitTracker.cellsHit[cell] == true {
+                    hitNumberOfCellsInShip += 1
+                    if hitNumberOfCellsInShip == numberOfCellsInShip {
+                        return true
+                    }
+                }
+            }
         return false
+        }
     }
 
 // TODO: Add custom initializers
