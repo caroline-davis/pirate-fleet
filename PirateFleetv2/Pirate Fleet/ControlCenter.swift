@@ -90,6 +90,17 @@ struct Mine: PenaltyCell {
     let location: GridLocation
     var guaranteesHit: Bool
     var penaltyText: String
+
+    init(location: GridLocation, penaltyText: String) {
+        self.location = location
+        self.guaranteesHit = false
+        self.penaltyText = penaltyText
+    }
+    init(location: GridLocation, guaranteesHit: Bool, penaltyText: String) {
+        self.location = location
+        self.guaranteesHit = guaranteesHit
+        self.penaltyText = penaltyText
+    }
 }
 
 // TODO: Adopt and implement the PenaltyCell protocol
@@ -103,31 +114,31 @@ class ControlCenter {
     
     func placeItemsOnGrid(human: Human) {
         
-        let smallShip = Ship(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true, isWooden: false)
+        let smallShip = Ship(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true, isWooden: true)
         human.addShipToGrid(smallShip)
         
-        let mediumShip1 = Ship(length: 3, location: GridLocation(x: 0, y: 0), isVertical: false, isWooden:        true)
+        let mediumShip1 = Ship(length: 3, location: GridLocation(x: 0, y: 0), isVertical: false, isWooden: true)
         human.addShipToGrid(mediumShip1)
         
         let mediumShip2 = Ship(length: 3, location: GridLocation(x: 3, y: 1), isVertical: false, isWooden: true)
         human.addShipToGrid(mediumShip2)
         
-        let largeShip = Ship(length: 4, location: GridLocation(x: 6, y: 3), isVertical: true, isWooden: false)
+        let largeShip = Ship(length: 4, location: GridLocation(x: 6, y: 3), isVertical: true)
         human.addShipToGrid(largeShip)
         
-        let xLargeShip = Ship(length: 5, location: GridLocation(x: 7, y: 2), isVertical: true, isWooden: false)
+        let xLargeShip = Ship(length: 5, location: GridLocation(x: 7, y: 2), isVertical: true)
         human.addShipToGrid(xLargeShip)
         
-        let mine1 = Mine(location: GridLocation(x: 6, y: 0), guaranteesHit: true, penaltyText: "Ouchy Mama")
+        let mine1 = Mine(location: GridLocation(x: 6, y: 0), guaranteesHit: true, penaltyText: "Oh No a Mine!")
         human.addMineToGrid(mine1)
         
-        let mine2 = Mine(location: GridLocation(x: 3, y: 3), guaranteesHit: true, penaltyText: "Ouchy Mama")
+        let mine2 = Mine(location: GridLocation(x: 3, y: 3), penaltyText: "Oh No a Mine!")
         human.addMineToGrid(mine2)
         
-        let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6), guaranteesHit: true, penaltyText: "Ouchy SeaMonster")
+        let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6), guaranteesHit: true, penaltyText: "Ouchy SeaMonster!")
         human.addSeamonsterToGrid(seamonster1)
         
-        let seamonster2 = SeaMonster(location: GridLocation(x: 2, y: 2), guaranteesHit: true, penaltyText: "Ouchy SeaMonster")
+        let seamonster2 = SeaMonster(location: GridLocation(x: 2, y: 2), guaranteesHit: true, penaltyText: "Ouchy SeaMonster!")
         human.addSeamonsterToGrid(seamonster2)
     }
     
